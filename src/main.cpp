@@ -40,7 +40,6 @@ int main(int argc, char *argv[])
 	qmlRegisterType<Communicator>(url, 1, 0, "Communicator");
 
     QQmlApplicationEngine engine;
-    engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
 
     qDebug() << "OpenSSL" << QSslSocket::supportsSsl() << QSslSocket::sslLibraryVersionString() << QSslSocket::sslLibraryBuildVersionString();
 
@@ -60,6 +59,8 @@ int main(int argc, char *argv[])
 	context->setContextProperty("historyModel", manager.history());
 	context->setContextProperty("conman", manager.connectionManager());
 	context->setContextProperty("helpers", &helpers);
+
+    engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
 
     qDebug() << "HaveClip version" << VERSION;
 
