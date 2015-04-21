@@ -33,7 +33,12 @@ SOURCES += src/main.cpp \
     haveclip-core/src/Network/Conversations/Introduction.cpp \
     haveclip-core/src/Network/Conversations/Verification.cpp \
     haveclip-core/src/RemoteControls/RemoteBase.cpp \
-    haveclip-core/src/RemoteControls/Sync.cpp
+    haveclip-core/src/RemoteControls/Sync.cpp \
+    haveclip-core/src/Helpers/qmlclipboardmanager.cpp \
+    haveclip-core/src/Helpers/qmlhelpers.cpp \
+    haveclip-core/src/Helpers/qmlnode.cpp \
+    haveclip-core/src/Models/nodediscoverymodel.cpp \
+    haveclip-core/src/Models/nodemodel.cpp
 
 RESOURCES += qml.qrc
 
@@ -81,6 +86,11 @@ HEADERS += \
     haveclip-core/src/Network/Conversations/Introduction.h \
     haveclip-core/src/Network/Conversations/Verification.h \
     haveclip-core/src/RemoteControls/RemoteBase.h \
-    haveclip-core/src/RemoteControls/Sync.h
+    haveclip-core/src/RemoteControls/Sync.h \
+    haveclip-core/src/Helpers/qmlclipboardmanager.h \
+    haveclip-core/src/Helpers/qmlhelpers.h \
+    haveclip-core/src/Helpers/qmlnode.h \
+    haveclip-core/src/Models/nodediscoverymodel.h \
+    haveclip-core/src/Models/nodemodel.h
 
 DISTFILES +=
