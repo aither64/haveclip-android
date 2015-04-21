@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 
     QApplication app(argc, argv);
 
-    const char* url = "cz.haveclip";
+    const char* url = "cz.havefun.haveclip";
 
     qmlRegisterType(QUrl("qrc:/qml/pages/BasePage.qml"), url, 1, 0, "BasePage");
     qmlRegisterType(QUrl("qrc:/qml/pages/HistoryPage.qml"), url, 1, 0, "HistoryPage");
