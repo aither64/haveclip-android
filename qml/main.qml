@@ -26,4 +26,11 @@ ApplicationWindow {
         anchors.fill: parent
         initialItem: HistoryPage {}
     }
+
+    Component.onCompleted: {
+        Qt.application.stateChanged.connect(function(s) {
+            if (s === Qt.ApplicationActive)
+                manager.checkClipboard();
+        });
+    }
 }
