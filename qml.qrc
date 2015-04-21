@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/main.qml</file>
+        <file>qml/pages/BasePage.qml</file>
+        <file>qml/pages/Settings.qml</file>
+        <file>qml/pages/HistoryPage.qml</file>
+    </qresource>
+</RCC>
