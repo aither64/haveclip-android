@@ -1,4 +1,5 @@
 TEMPLATE = app
+TARGET = HaveClip
 
 QT += qml quick widgets
 
@@ -93,4 +94,7 @@ HEADERS += \
     haveclip-core/src/Models/nodediscoverymodel.h \
     haveclip-core/src/Models/nodemodel.h
 
-DISTFILES +=
+DISTFILES += \
+    android/AndroidManifest.xml
+
+android: ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
