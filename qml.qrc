@@ -6,6 +6,7 @@
         <file>qml/pages/HistoryPage.qml</file>
         <file>qml/pages/settings/Clipboard.qml</file>
         <file>qml/pages/settings/Network.qml</file>
+        <file>qml/pages/settings/Security.qml</file>
         <file>qml/components/LabelTextField.qml</file>
     </qresource>
 </RCC>
