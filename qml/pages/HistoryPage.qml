@@ -7,14 +7,37 @@ BasePage {
     id: historyPage
     pageTitle.text: "Clipboard history"
 
-    property Component settingsPage: SettingsPage {
-
+    toolBar: RowLayout {
+        ToolButton {
+            text: qsTr("Settings")
+            onClicked: pushPage(Qt.resolvedUrl("Settings.qml"))
+        }
     }
 
-    pageComponent: Button {
-        text: "Open settings"
-        onClicked: {
-            pushPage(settingsPage);
+    pageComponent: ListView {
+        id: listView
+        model: historyModel
+        anchors.fill: parent
+
+        delegate: Item {
+            id: delegate
+            height: 30
+
+            function formatItem(str) {
+                var ret = str.trim().slice(0, 30);
+
+                if(str.length > 30)
+                    ret += "...";
+
+                else if(!str.length)
+                    ret = "<empty>";
+
+                return ret;
+            }
+
+            Label {
+                text: formatItem(plaintext)
+            }
         }
     }
 }

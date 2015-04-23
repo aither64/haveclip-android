@@ -10,39 +10,48 @@ Item {
 
     property alias pageTitle: pageTitle
     property Component pageComponent
+    property Component toolBar
 
-
-    Rectangle {
-        id: topBar
+    ColumnLayout {
+        spacing: 2
         width: parent.width
-        height: 80
         anchors.top: parent.top
-        color: "purple"
-        border {
-            color: "red"
-            width: 1
-        }
+        anchors.bottom: parent.bottom
 
-        RowLayout {
-            Button {
-                text: "Back"
-                onClicked: {
-                    basePage.Stack.view.pop();
+        Rectangle {
+            id: topBar
+            Layout.preferredWidth: parent.width
+            Layout.preferredHeight: 80
+            color: "purple"
+            border {
+                color: "red"
+                width: 1
+            }
+
+            RowLayout {
+                Button {
+                    text: "Back"
+                    onClicked: {
+                        basePage.Stack.view.pop();
+                    }
+                }
+
+                Label {
+                    id: pageTitle
+                    color: "white"
                 }
             }
-
-            Label {
-                id: pageTitle
-                color: "white"
-            }
         }
-    }
 
-    Loader {
-        sourceComponent: pageComponent
-        anchors.top: topBar.bottom
-        anchors.bottom: parent.bottom
-        width: parent.width
+        Loader {
+            sourceComponent: toolBar
+        }
+
+        Loader {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            sourceComponent: pageComponent
+        }
     }
 
     function pushPage(page) {
