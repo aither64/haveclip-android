@@ -4,6 +4,7 @@
         <file>qml/pages/BasePage.qml</file>
         <file>qml/pages/Settings.qml</file>
         <file>qml/pages/HistoryPage.qml</file>
+        <file>qml/pages/settings/Clipboard.qml</file>
         <file>qml/components/LabelTextField.qml</file>
     </qresource>
 </RCC>
