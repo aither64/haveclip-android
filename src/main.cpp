@@ -23,11 +23,11 @@ int main(int argc, char *argv[])
 
     QApplication app(argc, argv);
 
-    const char* url = "cz.havefun.haveclip";
+	const char* url = "cz.havefun.haveclip";
 
-    qmlRegisterType(QUrl("qrc:/qml/pages/BasePage.qml"), url, 1, 0, "BasePage");
-    qmlRegisterType(QUrl("qrc:/qml/pages/HistoryPage.qml"), url, 1, 0, "HistoryPage");
-    qmlRegisterType(QUrl("qrc:/qml/pages/Settings.qml"), url, 1, 0, "SettingsPage");
+	qmlRegisterType(QUrl("qrc:/qml/pages/BasePage.qml"), url, 1, 0, "BasePage");
+	qmlRegisterType(QUrl("qrc:/qml/pages/HistoryPage.qml"), url, 1, 0, "HistoryPage");
+	qmlRegisterType(QUrl("qrc:/qml/pages/Settings.qml"), url, 1, 0, "SettingsPage");
 
 	qRegisterMetaType<Communicator::CommunicationStatus>("Communicator::CommunicationStatus");
 	qRegisterMetaType<ConnectionManager::CodeValidity>("ConnectionManager::CodeValidity");
@@ -41,13 +41,13 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
-    qDebug() << "OpenSSL" << QSslSocket::supportsSsl() << QSslSocket::sslLibraryVersionString() << QSslSocket::sslLibraryBuildVersionString();
+	qDebug() << "OpenSSL" << QSslSocket::supportsSsl() << QSslSocket::sslLibraryVersionString() << QSslSocket::sslLibraryBuildVersionString();
 
-    QScopedPointer<Settings> settings(Settings::create());
-    settings->init();
+	QScopedPointer<Settings> settings(Settings::create());
+	settings->init();
 
-    ClipboardManager manager;
-    manager.delayedStart(500);
+	ClipboardManager manager;
+	manager.delayedStart(500);
 
 	QmlClipboardManager qmlManager;
 	QmlHelpers helpers;
