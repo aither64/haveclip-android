@@ -102,18 +102,15 @@ BasePage {
 
                 ColumnLayout {
                     Layout.preferredWidth: parent.width
-
-                    Label {
-                        text: qsTr("Max clipboard size to send")
-                    }
-
-                    Slider {
+                    TextSlider {
                         id: maxSendSize
                         Layout.preferredWidth: parent.width
+                        label: qsTr("Max clipboard size to send")
                         value: settings.maxSendSize / 1024 / 1024
                         minimumValue: 0
                         maximumValue: 100
                         stepSize: 1
+                        valueText: value + " MB"
                     }
 
                     Binding {
@@ -122,17 +119,15 @@ BasePage {
                         value: maxSendSize.value * 1024 * 1024
                     }
 
-                    Label {
-                        text: qsTr("Max clipboard size to receive")
-                    }
-
-                    Slider {
+                    TextSlider {
                         id: maxRecvSize
                         Layout.preferredWidth: parent.width
+                        label: qsTr("Max clipboard size to receive")
                         value: settings.maxReceiveSize / 1024 / 1024
                         minimumValue: 0
                         maximumValue: 100
                         stepSize: 1
+                        valueText: value + " MB"
                     }
 
                     Binding {

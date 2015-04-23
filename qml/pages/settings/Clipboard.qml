@@ -32,17 +32,15 @@ BasePage {
                         value: keepHistory.checked
                     }
 
-                    Label {
-                        text: qsTr("History size")
-                    }
-
-                    Slider {
+                    TextSlider {
                         id: historySize
                         Layout.preferredWidth: parent.width
+                        label: qsTr("History size")
                         minimumValue: 1
                         maximumValue: 100
                         stepSize: 1
                         value: settings.historySize
+                        valueText: value.toString() + " " + (value == 1 ? qsTr("entry") : qsTr("entries"))
                         enabled: keepHistory.checked
                     }
 
