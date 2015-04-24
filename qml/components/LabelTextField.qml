@@ -18,11 +18,19 @@ ColumnLayout {
     }
 
     TextField {
+        id: textField
         placeholderText: field.placeholderText
         text: field.text
-        validator: field.validator
+        validator: field.validator ? field.validator : null
         inputMethodHints: field.inputMethodHints
         readOnly: field.readOnly
+        focus:
+    }
+
+    Binding {
+        target: field
+        property: "text"
+        value: textField.text
     }
 }
 
