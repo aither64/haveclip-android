@@ -10,5 +10,7 @@
         <file>qml/components/LabelTextField.qml</file>
         <file>qml/components/TextSlider.qml</file>
         <file>qml/pages/settings/Pool.qml</file>
+        <file>qml/pages/settings/verificationwizard/Search.qml</file>
+        <file>qml/pages/settings/verificationwizard/Verify.qml</file>
     </qresource>
 </RCC>
