@@ -3,14 +3,12 @@ import QtQuick.Controls 1.3
 import QtQuick.Layouts 1.1
 
 FocusScope {
-    id: field
-
-    property string label
-    property string placeholderText
-    property string text
-    property variant validator
-    property int inputMethodHints
-    property bool readOnly: false
+    property alias label: label.text
+    property alias placeholderText: textField.placeholderText
+    property alias text: textField.text
+    property alias validator: textField.validator
+    property alias inputMethodHints: textField.inputMethodHints
+    property alias readOnly: textField.readOnly
 
     height: layout.height
 
@@ -18,24 +16,13 @@ FocusScope {
         id: layout
 
         Label {
-            text: field.label
+            id: label
             wrapMode: Text.Wrap
         }
 
         TextField {
             id: textField
-            placeholderText: field.placeholderText
-            text: field.text
-            validator: field.validator ? field.validator : null
-            inputMethodHints: field.inputMethodHints
-            readOnly: field.readOnly
             focus: true
-        }
-
-        Binding {
-            target: field
-            property: "text"
-            value: textField.text
         }
     }
 }
