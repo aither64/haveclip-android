@@ -9,5 +9,6 @@
         <file>qml/pages/settings/Security.qml</file>
         <file>qml/components/LabelTextField.qml</file>
         <file>qml/components/TextSlider.qml</file>
+        <file>qml/pages/settings/Pool.qml</file>
     </qresource>
 </RCC>
