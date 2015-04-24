@@ -54,7 +54,7 @@ Item {
         }
     }
 
-    function pushPage(page) {
-        basePage.Stack.view.push(page);
+    function pushPage(page, properties) {
+        basePage.Stack.view.push({item: page, properties: properties});
     }
 }
