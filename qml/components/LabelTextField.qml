@@ -2,7 +2,7 @@ import QtQuick 2.4
 import QtQuick.Controls 1.3
 import QtQuick.Layouts 1.1
 
-ColumnLayout {
+FocusScope {
     id: field
 
     property string label
@@ -12,25 +12,30 @@ ColumnLayout {
     property int inputMethodHints
     property bool readOnly: false
 
-    Label {
-        text: field.label
-        wrapMode: Text.Wrap
-    }
+    height: layout.height
 
-    TextField {
-        id: textField
-        placeholderText: field.placeholderText
-        text: field.text
-        validator: field.validator ? field.validator : null
-        inputMethodHints: field.inputMethodHints
-        readOnly: field.readOnly
-        focus:
-    }
+    ColumnLayout {
+        id: layout
 
-    Binding {
-        target: field
-        property: "text"
-        value: textField.text
+        Label {
+            text: field.label
+            wrapMode: Text.Wrap
+        }
+
+        TextField {
+            id: textField
+            placeholderText: field.placeholderText
+            text: field.text
+            validator: field.validator ? field.validator : null
+            inputMethodHints: field.inputMethodHints
+            readOnly: field.readOnly
+            focus: true
+        }
+
+        Binding {
+            target: field
+            property: "text"
+            value: textField.text
+        }
     }
 }
-
