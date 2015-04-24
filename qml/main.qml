@@ -11,16 +11,6 @@ ApplicationWindow {
     height: 700
     visible: true
 
-    MessageDialog {
-        id: messageDialog
-        title: qsTr("May I have your attention, please?")
-
-        function show(caption) {
-            messageDialog.text = caption;
-            messageDialog.open();
-        }
-    }
-
     StackView {
         id: pageView
         anchors.fill: parent
@@ -31,10 +21,25 @@ ApplicationWindow {
         }
     }
 
+    Loader {
+        id: loader
+        onLoaded: {
+            var l = loader;
+
+            item.closed.connect(function() {
+                l.source = "";
+            });
+        }
+    }
+
     Component.onCompleted: {
         Qt.application.stateChanged.connect(function(s) {
             if (s === Qt.ApplicationActive)
                 manager.checkClipboard();
+        });
+
+        conman.verificationRequested.connect(function(){
+            loader.source = Qt.resolvedUrl("pages/settings/verificationwizard/Prompt.qml");
         });
     }
 }
