@@ -8,7 +8,7 @@ ColumnLayout {
     property string label
     property string placeholderText
     property string text
-    property Component validator
+    property variant validator
     property int inputMethodHints
     property bool readOnly: false
 
