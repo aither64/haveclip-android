@@ -30,6 +30,11 @@ Activity {
         anchors.top: actionBar.bottom
         model: ListModel {
             ListElement {
+                actionId: 2
+                title: qsTr("Synchronize clipboard")
+            }
+
+            ListElement {
                 actionId: 0
                 title: qsTr("Settings")
                 page: "Settings.qml"
@@ -50,6 +55,10 @@ Activity {
 
             case 1:
                 confirmClear.open();
+                break;
+
+            case 2:
+                manager.doSync();
                 break;
             }
         }
