@@ -29,8 +29,6 @@ int main(int argc, char *argv[])
 
 	qmlRegisterType(QUrl("qrc:/qml/components/LabelTextField.qml"), url, 1, 0, "LabelTextField");
 	qmlRegisterType(QUrl("qrc:/qml/components/TextSlider.qml"), url, 1, 0, "TextSlider");
-	qmlRegisterType(QUrl("qrc:/qml/pages/HistoryPage.qml"), url, 1, 0, "HistoryPage");
-	qmlRegisterType(QUrl("qrc:/qml/pages/Settings.qml"), url, 1, 0, "SettingsPage");
 
 	qRegisterMetaType<Communicator::CommunicationStatus>("Communicator::CommunicationStatus");
 	qRegisterMetaType<ConnectionManager::CodeValidity>("ConnectionManager::CodeValidity");
