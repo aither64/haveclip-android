@@ -15,7 +15,10 @@ Activity {
         title: qsTr("Settings")
         showTitle: true
 
-        onActionButtonClicked: back();
+        onActionButtonClicked: {
+            settings.save();
+            back();
+        }
         z: 10
 
         menuBar : QuickButton {
