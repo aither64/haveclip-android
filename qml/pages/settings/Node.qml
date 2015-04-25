@@ -54,6 +54,8 @@ Activity {
             }
         }
         onItemSelected: {
+            popupMenu.active = false;
+
             switch (model.actionId) {
             case 0:
                 confirmDelete.open();
