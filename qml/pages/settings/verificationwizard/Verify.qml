@@ -12,6 +12,8 @@ Activity {
     property int nodeId: 0
     property bool introduced: false
     property bool error: false
+    property bool isOk: false
+    signal closed
 
     ActionBar {
         id: actionBar
@@ -19,7 +21,10 @@ Activity {
         title: dialog.introduced ? qsTr("Verification code") : qsTr("Connecting...")
         showTitle: true
 
-        onActionButtonClicked: back();
+        onActionButtonClicked: {
+            back();
+            closed();
+        }
         z: 10
     }
 
@@ -87,11 +92,6 @@ Activity {
         }
     }
 
-
-    function accept() {
-        console.log("would accept")
-    }
-
     Component.onCompleted: {
         var d = dialog
 
@@ -111,7 +111,9 @@ Activity {
         conman.verificationFinished.connect(function(status){
             switch(status) {
             case ConnectionManager.Valid:
-                d.accept()
+                d.isOk = true;
+                back();
+                closed();
 
             case ConnectionManager.NotValid:
                 break;
