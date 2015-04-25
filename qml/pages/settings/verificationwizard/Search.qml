@@ -57,10 +57,17 @@ Activity {
 
                     Button {
                         text: qsTr("Connect")
-                        onClicked: start(Qt.resolvedUrl("Verify.qml"), {
-                            host: addrField.text,
-                            port: parseInt(portField.text)
-                        })
+                        onClicked: {
+                            var dialog = start(Qt.resolvedUrl("Verify.qml"), {
+                                host: addrField.text,
+                                port: parseInt(portField.text)
+                            });
+
+                            dialog.closed.connect(function() {
+                                if (dialog.isOk)
+                                    back();
+                            });
+                        }
                     }
                 }
             }
