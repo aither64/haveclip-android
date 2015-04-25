@@ -3,6 +3,7 @@ import QtQuick.Controls 1.3
 import QtQuick.Layouts 1.1
 import QuickAndroid 0.1
 import QuickAndroid.style 0.1
+import QtQuick.Dialogs 1.2
 import cz.havefun.haveclip 1.0
 
 Activity {
@@ -29,15 +30,44 @@ Activity {
         anchors.top: actionBar.bottom
         model: ListModel {
             ListElement {
+                actionId: 0
                 title: qsTr("Settings")
                 page: "Settings.qml"
+            }
+
+            ListElement {
+                actionId: 1
+                title: qsTr("Clear history")
             }
         }
         onItemSelected: {
             popupMenu.active = false;
-            start(Qt.resolvedUrl(model.page));
+
+            switch (model.actionId) {
+            case 0:
+                start(Qt.resolvedUrl(model.page));
+                break;
+
+            case 1:
+                confirmClear.open();
+                break;
+            }
         }
         z: 10000
+    }
+
+    Dialog {
+        id: confirmClear
+        standardButtons: StandardButton.No | StandardButton.Yes
+        onYes: historyModel.clear()
+
+        ColumnLayout {
+            Label {
+                Layout.maximumWidth: historyPage.width - 60
+                text: qsTr("Do you really want to clear the history?")
+                wrapMode: Text.Wrap
+            }
+        }
     }
 
     ListView {
