@@ -13,14 +13,6 @@ Activity {
 
         onActionButtonClicked: back();
         z: 10
-
-        menuBar : QuickButton {
-            icon : Qt.resolvedUrl("../../drawable-xxhdpi/ic_menu.png")
-            onClicked:  {
-                popupMenu.toggle();
-            }
-            opacity: 0.87
-        }
     }
 
     Flickable {
