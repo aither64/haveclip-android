@@ -30,6 +30,6 @@ Application {
             loader.source = Qt.resolvedUrl("pages/settings/verificationwizard/Prompt.qml");
         });
 
-        start(Qt.resolvedUrl("pages/HistoryPage.qml"));
+        start(Qt.resolvedUrl("pages/History.qml"));
     }
 }
