@@ -5,6 +5,8 @@
 #include <QSslSocket>
 #include <QDebug>
 
+#include "quickandroid.h"
+
 #include "haveclip-core/src/Settings.h"
 #include "haveclip-core/src/ClipboardManager.h"
 #include "haveclip-core/src/CertificateInfo.h"
@@ -41,7 +43,10 @@ int main(int argc, char *argv[])
 	qmlRegisterType<ConnectionManager>(url, 1, 0, "ConnectionManager");
 	qmlRegisterType<Communicator>(url, 1, 0, "Communicator");
 
-    QQmlApplicationEngine engine;
+	QQuickView view;
+
+	view.engine()->addImportPath("qrc:///");
+	QuickAndroid::registerTypes();
 
 	qDebug() << "OpenSSL" << QSslSocket::supportsSsl() << QSslSocket::sslLibraryVersionString() << QSslSocket::sslLibraryBuildVersionString();
 
@@ -54,7 +59,7 @@ int main(int argc, char *argv[])
 	QmlClipboardManager qmlManager;
 	QmlHelpers helpers;
 
-	QQmlContext *context = engine.rootContext();
+	QQmlContext *context = view.engine()->rootContext();
 
 	context->setContextProperty("settings", Settings::get());
 	context->setContextProperty("manager", &qmlManager);
@@ -62,7 +67,9 @@ int main(int argc, char *argv[])
 	context->setContextProperty("conman", manager.connectionManager());
 	context->setContextProperty("helpers", &helpers);
 
-    engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
+	view.setResizeMode(QQuickView::SizeRootObjectToView);
+	view.setSource(QUrl(QStringLiteral("qrc:/qml/main.qml")));
+	view.show();
 
     qDebug() << "HaveClip version" << VERSION;
 
