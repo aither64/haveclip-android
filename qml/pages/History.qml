@@ -30,19 +30,19 @@ Activity {
         anchors.top: actionBar.bottom
         model: ListModel {
             ListElement {
-                actionId: 2
-                title: qsTr("Synchronize clipboard")
-            }
-
-            ListElement {
                 actionId: 0
-                title: qsTr("Settings")
-                page: "Settings.qml"
+                title: qsTr("Synchronize clipboard")
             }
 
             ListElement {
                 actionId: 1
                 title: qsTr("Clear history")
+            }
+
+            ListElement {
+                actionId: 2
+                title: qsTr("Settings")
+                page: "Settings.qml"
             }
         }
         onItemSelected: {
@@ -50,7 +50,7 @@ Activity {
 
             switch (model.actionId) {
             case 0:
-                start(Qt.resolvedUrl(model.page));
+                manager.doSync();
                 break;
 
             case 1:
@@ -58,7 +58,7 @@ Activity {
                 break;
 
             case 2:
-                manager.doSync();
+                start(Qt.resolvedUrl(model.page));
                 break;
             }
         }
