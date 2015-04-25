@@ -13,5 +13,6 @@
         <file>qml/pages/settings/verificationwizard/Verify.qml</file>
         <file>qml/pages/settings/verificationwizard/Prompt.qml</file>
         <file>drawable-xxhdpi/ic_menu.png</file>
+        <file>qml/pages/settings/Node.qml</file>
     </qresource>
 </RCC>

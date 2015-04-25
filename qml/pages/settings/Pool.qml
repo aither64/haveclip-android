@@ -77,16 +77,22 @@ Activity {
                     anchors.fill: parent
 
                     onClicked: {
-                        var dialog = pushPage(Qt.resolvedUrl("NodeDialog.qml"), {
-                            "node": nodeModel.nodeAt(index),
-                        })
+                        var n = nodeModel.nodeAt(index);
+                        var dialog = start(Qt.resolvedUrl("Node.qml"), {
+                            "node": n,
+                            "name": n.name,
+                            "host": n.host,
+                            "port": n.port,
+                            "sendEnabled": n.sendEnabled,
+                            "recvEnabled": n.receiveEnabled
+                        });
 
-                        dialog.accepted.connect(function() {
-                            if(dialog.shouldDelete)
-                                nodeModel.remove(dialog.node)
+                        dialog.closed.connect(function() {
+                            if (dialog.shouldDelete)
+                                nodeModel.remove(dialog.node);
 
-                            else
-                                nodeModel.update(dialog.node)
+                             else
+                                nodeModel.update(dialog.node);
                         });
                     }
                 }
