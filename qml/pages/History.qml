@@ -44,6 +44,12 @@ Activity {
                 title: qsTr("Settings")
                 page: "Settings.qml"
             }
+
+            ListElement {
+                actionId: 2
+                title: qsTr("About...")
+                page: "About.qml"
+            }
         }
         onItemSelected: {
             popupMenu.active = false;
