@@ -3,6 +3,7 @@ import QtQuick.Controls 1.3
 import QtQuick.Layouts 1.1
 import QtQuick.Dialogs 1.2
 import QuickAndroid 0.1
+import QuickAndroid.style 0.1
 import cz.havefun.haveclip 1.0
 
 Activity {
@@ -62,39 +63,45 @@ Activity {
             width: parent.width
             model: nodeModel
 
-            delegate: Item {
-                id: listItem
-                width: listView.width
-                height: 50
+            delegate: QuickButton {
+                width: parent.width
+                height: 40 * A.dp
 
-                Label {
+                Text {
                     text: name.length ? name : (host + ":" + port)
+                    anchors.left: parent.left
+                    anchors.leftMargin: 10 * A.dp
                     anchors.verticalCenter: parent.verticalCenter
-                    font.capitalization: Font.Capitalize
+                    font.pixelSize: Style.theme.smallText.textSize * A.dp
+                    color : Style.theme.black87
                 }
 
-                MouseArea {
-                    anchors.fill: parent
+                Rectangle {
+                    anchors.bottom: parent.bottom
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    height: 1 * A.dp
+                    color : "#1A0000"
+                }
 
-                    onClicked: {
-                        var n = nodeModel.nodeAt(index);
-                        var dialog = start(Qt.resolvedUrl("Node.qml"), {
-                            "node": n,
-                            "name": n.name,
-                            "host": n.host,
-                            "port": n.port,
-                            "sendEnabled": n.sendEnabled,
-                            "recvEnabled": n.receiveEnabled
-                        });
+                onClicked: {
+                    var n = nodeModel.nodeAt(index);
+                    var dialog = start(Qt.resolvedUrl("Node.qml"), {
+                        "node": n,
+                        "name": n.name,
+                        "host": n.host,
+                        "port": n.port,
+                        "sendEnabled": n.sendEnabled,
+                        "recvEnabled": n.receiveEnabled
+                    });
 
-                        dialog.closed.connect(function() {
-                            if (dialog.shouldDelete)
-                                nodeModel.remove(dialog.node);
+                    dialog.closed.connect(function() {
+                        if (dialog.shouldDelete)
+                            nodeModel.remove(dialog.node);
 
-                             else
-                                nodeModel.update(dialog.node);
-                        });
-                    }
+                         else
+                            nodeModel.update(dialog.node);
+                    });
                 }
             }
         }
