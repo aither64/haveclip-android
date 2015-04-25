@@ -1,12 +1,53 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.3
 import QtQuick.Layouts 1.1
+import QuickAndroid 0.1
+import QuickAndroid.style 0.1
 import QtQuick.Dialogs 1.2
 import cz.havefun.haveclip 1.0
 
-BasePage {
+Activity {
     id: page
-    pageTitle.text: "Settings"
+
+    ActionBar {
+        id: actionBar
+        upEnabled: true
+        title: qsTr("Settings")
+        showTitle: true
+
+        onActionButtonClicked: back();
+        z: 10
+
+        menuBar : QuickButton {
+            icon : Qt.resolvedUrl("../../drawable-xxhdpi/ic_menu.png")
+            onClicked:  {
+                popupMenu.toggle();
+            }
+            opacity: 0.87
+        }
+    }
+
+    PopupMenu {
+        id: popupMenu
+        anchors.right: parent.right
+        anchors.top: actionBar.bottom
+        model: ListModel {
+            ListElement {
+                actionId: 0
+                title: qsTr("Reset settings")
+            }
+        }
+        onItemSelected: {
+            switch (model.actionId) {
+            case 0:
+                confirmReset.open();
+                break;
+            default:
+                break;
+            }
+        }
+        z: 10000
+    }
 
     ListModel {
         id: settingsModel
@@ -48,24 +89,34 @@ BasePage {
         }
     }
 
-    toolBar: RowLayout {
-        ToolButton {
-            text: qsTr("Reset settings")
-            onClicked: confirmReset.open()
-        }
-    }
-
-    pageComponent: ListView {
-        anchors.fill: parent
+    ListView {
+        anchors.top : actionBar.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
         model: settingsModel
-        delegate: Label {
-            height: 50
-            text: title
+        delegate: QuickButton {
+            width: parent.width
+            height: 72 * A.dp
 
-            MouseArea {
-                anchors.fill: parent
-                onClicked: pushPage(Qt.resolvedUrl("settings/" + page))
+            Text {
+                text: model.title
+                anchors.left: parent.left
+                anchors.leftMargin: 16 * A.dp
+                anchors.verticalCenter: parent.verticalCenter
+                font.pixelSize: Style.theme.mediumText.textSize * A.dp
+                color : Style.theme.black87
             }
+
+            Rectangle {
+                anchors.bottom: parent.bottom
+                anchors.left: parent.left
+                anchors.right: parent.right
+                height: 1 * A.dp
+                color : "#1A0000"
+            }
+
+            onClicked: start(Qt.resolvedUrl("settings/" + model.page))
         }
     }
 }

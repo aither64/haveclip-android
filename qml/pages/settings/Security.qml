@@ -1,13 +1,25 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.3
 import QtQuick.Layouts 1.1
+import QuickAndroid 0.1
 import cz.havefun.haveclip 1.0
 
-BasePage {
-    pageTitle.text: qsTr("Security")
+Activity {
+    ActionBar {
+        id: actionBar
+        upEnabled: true
+        title: qsTr("Security")
+        showTitle: true
 
-    pageComponent: Flickable {
-        anchors.fill: parent
+        onActionButtonClicked: back();
+        z: 10
+    }
+
+    Flickable {
+        anchors.top : actionBar.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
         contentHeight: mainColumn.height
 
         ColumnLayout {
