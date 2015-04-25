@@ -1,9 +1,10 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.3
+import QuickAndroid 0.1
 import cz.havefun.haveclip 1.0
 
 
-BasePage {
+Activity {
     id: dialog
 
     property string host
@@ -12,59 +13,80 @@ BasePage {
     property bool introduced: false
     property bool error: false
 
-    pageTitle.text: dialog.introduced ? qsTr("Verification code") : qsTr("Connecting...")
+    ActionBar {
+        id: actionBar
+        upEnabled: true
+        title: dialog.introduced ? qsTr("Verification code") : qsTr("Connecting...")
+        showTitle: true
 
-    Component {
-        id: page
+        onActionButtonClicked: back();
+        z: 10
+    }
 
-        Flickable {
-            id: flickable
-            anchors.fill: parent
 
-            BusyIndicator {
-                anchors.centerIn: parent
-                running: !dialog.introduced && !error
-            }
+    Flickable {
+        id: flickable
+        anchors.top : actionBar.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
 
-            Column {
-                id: column
-                width: parent.width
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                }
+        BusyIndicator {
+            anchors.centerIn: parent
+            running: !dialog.introduced && !error
+        }
 
-                Label {
-                    visible: dialog.introduced
-                    width: parent.width
-                    horizontalAlignment: Text.AlignHCenter
-                    text: qsTr(
-                              "Please go to "
-                              + helpers.verifiedNode().name
-                              + " and type in the security code shown below."
-                        )
-                    wrapMode: Text.Wrap
-                }
+        Column {
+            id: column
+            width: parent.width
+            anchors {
+                left: parent.left
+                right: parent.right
             }
 
             Label {
-                id: errorLabel
+                visible: dialog.introduced
                 width: parent.width
-                visible: false
                 horizontalAlignment: Text.AlignHCenter
-                anchors.centerIn: parent
+                text: qsTr(
+                          "Please go to "
+                          + helpers.verifiedNode().name
+                          + " and type in the security code shown below."
+                    )
                 wrapMode: Text.Wrap
             }
+        }
 
-            Label {
-                visible: dialog.introduced && !dialog.error
-                anchors.centerIn: parent
-                text: qsTr("Security code:") + " " + conman.securityCode
-            }
+        Label {
+            id: errorLabel
+            width: parent.width
+            visible: false
+            horizontalAlignment: Text.AlignHCenter
+            anchors.centerIn: parent
+            wrapMode: Text.Wrap
+        }
+
+        Label {
+            visible: dialog.introduced && !dialog.error
+            anchors.centerIn: parent
+            text: qsTr("Security code:") + " " + conman.securityCode
         }
     }
 
-    pageComponent: page
+    Timer {
+        id: verifyTimer
+        interval: 100
+        repeat: false
+        onTriggered: {
+            if (nodeId > 0)
+                conman.verifyConnection(nodeId);
+            else
+                conman.verifyConnection(host, port);
+
+            console.log("host = " + host, ", port = ", port, ", node id = ", nodeId);
+        }
+    }
+
 
     function accept() {
         console.log("would accept")
@@ -104,11 +126,8 @@ BasePage {
 
         dialog.introduced = false
 
-        if(nodeId > 0)
-            conman.verifyConnection(nodeId)
-        else
-            conman.verifyConnection(host, port)
-
-        console.log("host = " + host, ", port = ", port, ", node id = ", nodeId)
+        // The timer here is necessary, because host and port properties are
+        // not set yet. They are set after component creation.
+        verifyTimer.start()
     }
 }
