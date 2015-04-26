@@ -31,5 +31,8 @@ Application {
         });
 
         start(Qt.resolvedUrl("pages/History.qml"));
+
+        if (settings.firstStart)
+            start(Qt.resolvedUrl("pages/settings/security/CertificateGenerator.qml"));
     }
 }
