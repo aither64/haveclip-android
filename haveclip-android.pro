@@ -3,6 +3,10 @@ TARGET = HaveClip
 
 QT += qml quick widgets
 
+INCLUDEPATH += $$PWD/../openssl-1.0.2a/include
+LIBS += -L$$PWD/../openssl-1.0.2a -lcrypto -lssl
+PRE_TARGETDEPS += $$PWD/../openssl-1.0.2a/libcrypto.a $$PWD/../openssl-1.0.2a/libssl.a
+
 SOURCES += src/main.cpp \
     haveclip-core/src/CertificateInfo.cpp \
     haveclip-core/src/Cli.cpp \
@@ -39,7 +43,9 @@ SOURCES += src/main.cpp \
     haveclip-core/src/Helpers/qmlhelpers.cpp \
     haveclip-core/src/Helpers/qmlnode.cpp \
     haveclip-core/src/Models/nodediscoverymodel.cpp \
-    haveclip-core/src/Models/nodemodel.cpp
+    haveclip-core/src/Models/nodemodel.cpp \
+    haveclip-core/src/CertificateGenerator.cpp \
+    haveclip-core/src/CertificateGeneratorThread.cpp
 
 RESOURCES += qml.qrc
 
@@ -92,7 +98,9 @@ HEADERS += \
     haveclip-core/src/Helpers/qmlhelpers.h \
     haveclip-core/src/Helpers/qmlnode.h \
     haveclip-core/src/Models/nodediscoverymodel.h \
-    haveclip-core/src/Models/nodemodel.h
+    haveclip-core/src/Models/nodemodel.h \
+    haveclip-core/src/CertificateGenerator.h \
+    haveclip-core/src/CertificateGeneratorThread.h
 
 DISTFILES += \
     android/AndroidManifest.xml

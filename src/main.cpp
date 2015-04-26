@@ -5,17 +5,19 @@
 #include <QSslSocket>
 #include <QDebug>
 
+ #include <openssl/crypto.h>
+
 #include "quickandroid.h"
 
 #include "haveclip-core/src/Settings.h"
 #include "haveclip-core/src/ClipboardManager.h"
 #include "haveclip-core/src/CertificateInfo.h"
+#include "haveclip-core/src/CertificateGenerator.h"
 #include "haveclip-core/src/Models/nodediscoverymodel.h"
 #include "haveclip-core/src/Models/nodemodel.h"
 #include "haveclip-core/src/Helpers/qmlnode.h"
 #include "haveclip-core/src/Helpers/qmlclipboardmanager.h"
 #include "haveclip-core/src/Helpers/qmlhelpers.h"
-
 
 int main(int argc, char *argv[])
 {
@@ -35,6 +37,7 @@ int main(int argc, char *argv[])
 
 	qmlRegisterType<QmlNode>(url, 1, 0, "Node");
 	qmlRegisterType<CertificateInfo>(url, 1, 0, "SslCertificate");
+	qmlRegisterType<CertificateGenerator>(url, 1, 0, "CertificateGenerator");
 	qmlRegisterType<NodeModel>(url, 1, 0, "NodeModel");
 	qmlRegisterType<NodeDiscoveryModel>(url, 1, 0, "NodeDiscoveryModel");
 	qmlRegisterType<ConnectionManager>(url, 1, 0, "ConnectionManager");
@@ -46,6 +49,7 @@ int main(int argc, char *argv[])
 	QuickAndroid::registerTypes();
 
 	qDebug() << "OpenSSL" << QSslSocket::supportsSsl() << QSslSocket::sslLibraryVersionString() << QSslSocket::sslLibraryBuildVersionString();
+	qDebug() << "Real version:" << SSLeay_version(SSLEAY_VERSION) << SSLeay_version(SSLEAY_BUILT_ON);
 
 	QScopedPointer<Settings> settings(Settings::create());
 	settings->init();

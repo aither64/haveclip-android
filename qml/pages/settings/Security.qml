@@ -13,6 +13,32 @@ Activity {
 
         onActionButtonClicked: back();
         z: 10
+
+        menuBar : QuickButton {
+            icon : Qt.resolvedUrl("../../../drawable-xxhdpi/ic_menu.png")
+            onClicked:  {
+                popupMenu.toggle();
+            }
+            opacity: 0.87
+        }
+    }
+
+    PopupMenu {
+        id: popupMenu
+        anchors.right: parent.right
+        anchors.top: actionBar.bottom
+        model: ListModel {
+            ListElement {
+                title: qsTr("Generate new certificate")
+                page: "security/CertificateGenerator.qml"
+            }
+        }
+        onItemSelected: {
+            popupMenu.active = false;
+
+            start(Qt.resolvedUrl(model.page));
+        }
+        z: 10000
     }
 
     Flickable {
@@ -116,13 +142,6 @@ Activity {
                         width: parent.width
                         label: qsTr("Expires on")
                         text: Qt.formatDateTime(helpers.selfSslCertificate.expiryDate, "d/M/yyyy")
-                        readOnly: true
-                    }
-
-                    LabelTextField {
-                        width: parent.width
-                        label: qsTr("Organization")
-                        text: helpers.selfSslCertificate.organization
                         readOnly: true
                     }
 
