@@ -103,7 +103,8 @@ HEADERS += \
     haveclip-core/src/CertificateGeneratorThread.h
 
 DISTFILES += \
-    android/AndroidManifest.xml
+    android/AndroidManifest.xml \
+    README.md
 
 android: ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 
