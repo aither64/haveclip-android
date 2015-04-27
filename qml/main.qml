@@ -21,11 +21,6 @@ Application {
     }
 
     Component.onCompleted: {
-        Qt.application.stateChanged.connect(function(s) {
-            if (s === Qt.ApplicationActive)
-                manager.checkClipboard();
-        });
-
         conman.verificationRequested.connect(function(){
             loader.source = Qt.resolvedUrl("pages/settings/verificationwizard/Prompt.qml");
         });
