@@ -1,7 +1,7 @@
 TEMPLATE = app
 TARGET = HaveClip
 
-QT += qml quick widgets
+QT += qml quick widgets androidextras
 
 INCLUDEPATH += $$PWD/../openssl-1.0.2a/include
 LIBS += -L$$PWD/../openssl-1.0.2a -lcrypto -lssl
@@ -45,7 +45,8 @@ SOURCES += src/main.cpp \
     haveclip-core/src/Models/nodediscoverymodel.cpp \
     haveclip-core/src/Models/nodemodel.cpp \
     haveclip-core/src/CertificateGenerator.cpp \
-    haveclip-core/src/CertificateGeneratorThread.cpp
+    haveclip-core/src/CertificateGeneratorThread.cpp \
+    src/android.cpp
 
 RESOURCES += qml.qrc
 
@@ -104,7 +105,9 @@ HEADERS += \
 
 DISTFILES += \
     android/AndroidManifest.xml \
-    README.md
+    README.md \
+    android/src/cz/havefun/haveclip/ClipboardService.java \
+    android/src/cz/havefun/haveclip/HaveClipActivity.java
 
 android: ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 

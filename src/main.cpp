@@ -5,8 +5,6 @@
 #include <QSslSocket>
 #include <QDebug>
 
- #include <openssl/crypto.h>
-
 #include "quickandroid.h"
 
 #include "haveclip-core/src/Settings.h"
@@ -49,7 +47,6 @@ int main(int argc, char *argv[])
 	QuickAndroid::registerTypes();
 
 	qDebug() << "OpenSSL" << QSslSocket::supportsSsl() << QSslSocket::sslLibraryVersionString() << QSslSocket::sslLibraryBuildVersionString();
-	qDebug() << "Real version:" << SSLeay_version(SSLEAY_VERSION) << SSLeay_version(SSLEAY_BUILT_ON);
 
 	QScopedPointer<Settings> settings(Settings::create());
 	settings->init();

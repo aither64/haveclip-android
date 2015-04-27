@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application android:name="org.qtproject.qt5.android.bindings.QtApplication" android:label="@string/app_name" android:icon="@drawable/icon">
-        <activity android:screenOrientation="unspecified" android:name="org.qtproject.qt5.android.bindings.QtActivity" android:label="@string/app_name" android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|locale|fontScale|keyboard|keyboardHidden|navigation">
+        <activity android:screenOrientation="unspecified" android:name="cz.havefun.haveclip.HaveClipActivity" android:label="@string/app_name" android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|locale|fontScale|keyboard|keyboardHidden|navigation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -35,6 +35,12 @@
             <meta-data android:resource="@layout/splash" android:name="android.app.splash_screen"/>
             <!-- Splash screen -->
         </activity>
+
+        <service
+            android:name=".ClipboardService"
+            android:enabled="true"
+            android:exported="false" >
+        </service>
     </application>
 
 </manifest>
