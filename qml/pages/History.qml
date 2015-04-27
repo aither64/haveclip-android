@@ -128,5 +128,17 @@ Activity {
                 return ret;
             }
         }
+
+        Component.onCompleted: {
+            Qt.application.stateChanged.connect(function(s) {
+                if (s === Qt.ApplicationActive) {
+                    // Reset the model completely. Nothing else seems to have any
+                    // effect. listView.forceLayout() does nothing, sending
+                    // dataChanged() for all items does nothing as well.
+                    listView.model = null;
+                    listView.model = historyModel;
+                }
+            });
+        }
     }
 }
