@@ -1,9 +1,9 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.3
 import QtQuick.Layouts 1.1
-import QtQuick.Dialogs 1.2
 import QuickAndroid 0.1
 import QuickAndroid.style 0.1
+import QtQuick.Dialogs 1.2
 import cz.havefun.haveclip 1.0
 
 Activity {
@@ -25,6 +25,20 @@ Activity {
         }
     }
 
+    Dialog {
+        id: confirmDeleteAll
+        standardButtons: StandardButton.No | StandardButton.Yes
+        onYes: nodeModel.deleteAll()
+
+        ColumnLayout {
+            Label {
+                Layout.maximumWidth: page.width - 60
+                text: qsTr("Do you really want to delete all nodes?")
+                wrapMode: Text.Wrap
+            }
+        }
+    }
+
     PopupMenu {
         id: popupMenu
         anchors.right: parent.right
@@ -34,6 +48,11 @@ Activity {
                 actionId: 0
                 title: qsTr("Add node")
             }
+
+            ListElement {
+                actionId: 1
+                title: qsTr("Delete all")
+            }
         }
         onItemSelected: {
             popupMenu.active = false;
@@ -41,6 +60,10 @@ Activity {
             switch (model.actionId) {
             case 0:
                 start(Qt.resolvedUrl("verificationwizard/Search.qml"))
+                break;
+
+            case 1:
+                confirmDeleteAll.open();
                 break;
             default:
                 break;
