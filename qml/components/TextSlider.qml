@@ -4,6 +4,8 @@ import QtQuick.Layouts 1.1
 
 ColumnLayout {
     id: field
+    anchors.left: parent.left
+    anchors.right: parent.right
 
     property string label
     property real minimumValue: 0.0
@@ -30,6 +32,11 @@ ColumnLayout {
                 if (pos < 0)
                     pos = 0;
 
+                var field_x = field.x + field.width;
+
+                if (pos + width > field_x)
+                    pos = field_x - width;
+
                 return pos;
             }
         }
@@ -37,7 +44,8 @@ ColumnLayout {
 
     Slider {
         id: slider
-        Layout.fillWidth: true
+        anchors.left: parent.left
+        anchors.right: parent.right
         minimumValue: field.minimumValue
         maximumValue: field.maximumValue
         stepSize: field.stepSize
