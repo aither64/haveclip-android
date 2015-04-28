@@ -41,6 +41,18 @@ Activity {
                     anchors.right: parent.right
 
                     CheckBox {
+                        id: trackingEnabled
+                        text: qsTr("Track clipboard changes automatically")
+                        checked: settings.trackingEnabled
+                    }
+
+                    Binding {
+                        target: settings
+                        property: "trackingEnabled"
+                        value: trackingEnabled.checked
+                    }
+
+                    CheckBox {
                         id: keepHistory
                         text: qsTr("Keep history")
                         checked: settings.historyEnabled

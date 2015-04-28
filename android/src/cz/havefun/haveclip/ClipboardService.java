@@ -11,6 +11,7 @@ import android.os.IBinder;
 
 public class ClipboardService extends Service {
     private ClipboardManager m_manager;
+    private static ClipboardService m_instance;
 
     private OnPrimaryClipChangedListener listener = new OnPrimaryClipChangedListener() {
         public void onPrimaryClipChanged() {
@@ -22,19 +23,29 @@ public class ClipboardService extends Service {
 
     @Override
     public void onCreate() {
+        m_instance = this;
         m_manager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        m_manager.addPrimaryClipChangedListener(listener);
-
         return START_STICKY;
     }
 
     @Override
     public IBinder onBind(Intent intent) {
         return null;
+    }
+
+    public static void toggleListener(boolean enable) {
+        m_instance.doToggleListener(enable);
+    }
+
+    private void doToggleListener(boolean enable) {
+        if (enable)
+            m_manager.addPrimaryClipChangedListener(listener);
+        else
+            m_manager.removePrimaryClipChangedListener(listener);
     }
 
     private void checkClipboard() {

@@ -46,7 +46,8 @@ SOURCES += src/main.cpp \
     haveclip-core/src/Models/nodemodel.cpp \
     haveclip-core/src/CertificateGenerator.cpp \
     haveclip-core/src/CertificateGeneratorThread.cpp \
-    src/android.cpp
+    src/android.cpp \
+    src/settingwatcher.cpp
 
 RESOURCES += qml.qrc
 
@@ -101,7 +102,8 @@ HEADERS += \
     haveclip-core/src/Models/nodediscoverymodel.h \
     haveclip-core/src/Models/nodemodel.h \
     haveclip-core/src/CertificateGenerator.h \
-    haveclip-core/src/CertificateGeneratorThread.h
+    haveclip-core/src/CertificateGeneratorThread.h \
+    src/settingwatcher.h
 
 DISTFILES += \
     android/AndroidManifest.xml \

@@ -16,6 +16,7 @@
 #include "haveclip-core/src/Helpers/qmlnode.h"
 #include "haveclip-core/src/Helpers/qmlclipboardmanager.h"
 #include "haveclip-core/src/Helpers/qmlhelpers.h"
+#include "settingwatcher.h"
 
 int main(int argc, char *argv[])
 {
@@ -56,6 +57,8 @@ int main(int argc, char *argv[])
 
 	QmlClipboardManager qmlManager;
 	QmlHelpers helpers;
+
+	SettingWatcher watcher;
 
 	QQmlContext *context = view.engine()->rootContext();
 
