@@ -7,6 +7,8 @@ import QtQuick.Dialogs 1.2
 import cz.havefun.haveclip 1.0
 
 Activity {
+    id: poolPage
+
     ActionBar {
         id: actionBar
         upEnabled: true
@@ -32,7 +34,7 @@ Activity {
 
         ColumnLayout {
             Label {
-                Layout.maximumWidth: page.width - 60
+                Layout.maximumWidth: poolPage.width - 60
                 text: qsTr("Do you really want to delete all nodes?")
                 wrapMode: Text.Wrap
             }
@@ -109,6 +111,19 @@ Activity {
                     color : "#1A0000"
                 }
 
+                PopupMenu {
+                    id: itemMenu
+                    model: ListModel {
+                        ListElement {
+                            title: qsTr("Delete")
+                        }
+                    }
+                    onItemSelected: {
+                        popupMenu.active = false;
+                        nodeModel.removeId(id);
+                    }
+                }
+
                 onClicked: {
                     var n = nodeModel.nodeAt(index);
                     var dialog = start(Qt.resolvedUrl("Node.qml"), {
@@ -128,6 +143,18 @@ Activity {
                             nodeModel.update(dialog.node);
                     });
                 }
+
+                onPressAndHold: {
+                    var parent_x = poolPage.x + poolPage.width;
+                    var parent_y = poolPage.y + poolPage.height;
+                    var w = itemMenu.width;
+                    var h = itemMenu.height;
+
+                    itemMenu.x = mouse.x + w > parent_x ? mouse.x - w : mouse.x;
+                    itemMenu.y = mouse.y + h > parent_y ? mouse.y - h : mouse.y;
+                    itemMenu.toggle();
+                }
+
             }
         }
     }
