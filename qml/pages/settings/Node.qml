@@ -45,12 +45,12 @@ Activity {
         model: ListModel {
             ListElement {
                 actionId: 0
-                title: qsTr("Delete node")
+                title: qsTr("New identity verification")
             }
 
             ListElement {
                 actionId: 1
-                title: qsTr("New identity verification")
+                title: qsTr("Delete node")
             }
         }
         onItemSelected: {
@@ -58,9 +58,6 @@ Activity {
 
             switch (model.actionId) {
             case 0:
-                confirmDelete.open();
-                break;
-            case 1:
                 var dialog = start(Qt.resolvedUrl("verificationwizard/Verify.qml"), {
                     "nodeId": nodePage.node.id
                 });
@@ -70,6 +67,11 @@ Activity {
                         nodePage.node.update();
                 });
                 break;
+
+            case 1:
+                confirmDelete.open();
+                break;
+
             default:
                 break;
             }
