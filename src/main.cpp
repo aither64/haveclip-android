@@ -1,4 +1,4 @@
-#include <QApplication>
+#include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QtQuick>
 
@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationDomain("havefun.cz");
     QCoreApplication::setApplicationName("HaveClip");
 
-    QApplication app(argc, argv);
+	QGuiApplication app(argc, argv);
 
 	const char* url = "cz.havefun.haveclip";
 

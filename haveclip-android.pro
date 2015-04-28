@@ -1,7 +1,7 @@
 TEMPLATE = app
 TARGET = HaveClip
 
-QT += qml quick widgets androidextras
+QT += qml quick gui androidextras
 
 INCLUDEPATH += $$PWD/../openssl-1.0.2a/include
 LIBS += -L$$PWD/../openssl-1.0.2a -lcrypto -lssl
