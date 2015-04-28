@@ -114,7 +114,7 @@ Activity {
                 color : "#1A0000"
             }
 
-            onClicked: start(Qt.resolvedUrl("settings/" + model.page))
+            onClicked: manager.jumpToItemAt(index)
 
             function formatItem(str) {
                 var ret = str.trim().slice(0, 30);
