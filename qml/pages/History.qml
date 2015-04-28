@@ -114,7 +114,30 @@ Activity {
                 color : "#1A0000"
             }
 
+            PopupMenu {
+                id: itemMenu
+                model: ListModel {
+                    ListElement {
+                        title: qsTr("Delete")
+                    }
+                }
+                onItemSelected: {
+                    popupMenu.active = false;
+                    historyModel.remove(pointer);
+                }
+            }
+
             onClicked: manager.jumpToItemAt(index)
+            onPressAndHold: {
+                var parent_x = historyPage.x + historyPage.width;
+                var parent_y = historyPage.y + historyPage.height;
+                var w = itemMenu.width;
+                var h = itemMenu.height;
+
+                itemMenu.x = mouse.x + w > parent_x ? mouse.x - w : mouse.x;
+                itemMenu.y = mouse.y + h > parent_y ? mouse.y - h : mouse.y;
+                itemMenu.toggle();
+            }
 
             function formatItem(str) {
                 var ret = str.trim().slice(0, 30);
