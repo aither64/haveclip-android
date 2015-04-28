@@ -20,17 +20,25 @@ Activity {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
+        anchors.topMargin: 10 * A.dp
+        anchors.leftMargin: 10 * A.dp
+        anchors.rightMargin: 10 * A.dp
         contentHeight: mainColumn.height
 
         ColumnLayout {
             id: mainColumn
+            anchors.left: parent.left
+            anchors.right: parent.right
+            spacing: 10 * A.dp
 
             GroupBox {
-                Layout.preferredWidth: parent.width
+                anchors.left: parent.left
+                anchors.right: parent.right
                 title: qsTr("Clipboard settings")
 
                 ColumnLayout {
-                    Layout.preferredWidth: parent.width
+                    anchors.left: parent.left
+                    anchors.right: parent.right
 
                     CheckBox {
                         id: keepHistory
@@ -78,7 +86,8 @@ Activity {
             }
 
             GroupBox {
-                Layout.preferredWidth: parent.width
+                anchors.left: parent.left
+                anchors.right: parent.right
                 title: qsTr("Synchronization")
 
                 ColumnLayout {
