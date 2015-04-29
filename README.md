@@ -5,7 +5,8 @@ This is a beta version of HaveClip for Android. Most of the features are already
 implemented, but there may be a few glitches. The UI is incomplete and sometimes
 not pretty.
 
-Home page: http://www.havefun.cz/projects/haveclip/
+APK can be downloaded on project home page:
+http://www.havefun.cz/projects/haveclip/
 
 Build
 -----
