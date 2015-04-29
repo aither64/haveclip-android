@@ -15,7 +15,7 @@ with Qt itself.
 
 It is tested with the currently latest openssl-1.0.2a. Prior to building OpenSSL,
 configure environment variables using
-[https://wiki.openssl.org/images/7/70/Setenv-android.sh](this script).
+[Setenv-android.sh](https://wiki.openssl.org/images/7/70/Setenv-android.sh.
 
 Edit this script and set some variables, e.g.:
 
