@@ -83,7 +83,7 @@ Activity {
         text: qsTr("Add nodes using menu")
         anchors.centerIn: parent
         color: Style.theme.black54
-        font.pixelSize: Style.theme.normalText.textSize * A.dp
+        font.pixelSize: Style.theme.text.textSize * A.dp
     }
 
     Flickable {
@@ -98,12 +98,12 @@ Activity {
             anchors.top : parent.top
             anchors.left: parent.left
             anchors.right: parent.right
-            height: 40 * listView.count * A.dp
+            height: 50 * listView.count * A.dp
             model: nodeModel
 
             delegate: QuickButton {
                 width: parent.width
-                height: 40 * A.dp
+                height: 49 * A.dp
 
                 Text {
                     text: name.length ? name : (host + ":" + port)
