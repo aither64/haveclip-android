@@ -87,7 +87,10 @@ Activity {
 
         ListView {
             id: listView
-            width: parent.width
+            anchors.top : parent.top
+            anchors.left: parent.left
+            anchors.right: parent.right
+            height: 40 * tmpmodel.count * A.dp
             model: nodeModel
 
             delegate: QuickButton {
