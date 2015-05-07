@@ -95,15 +95,16 @@ Activity {
 
         delegate: QuickButton {
             width: parent.width
-            height: 40 * A.dp
+            height: 50 * A.dp
 
             Text {
                 text: formatItem(plaintext)
                 anchors.left: parent.left
                 anchors.leftMargin: 10 * A.dp
-                anchors.verticalCenter: parent.verticalCenter
-                font.pixelSize: Style.theme.smallText.textSize * A.dp
+                verticalAlignment: Text.AlignVCenter
+                font.pixelSize: Style.theme.text.textSize * A.dp
                 color : Style.theme.black87
+                height: 49 * A.dp
             }
 
             Rectangle {
@@ -111,7 +112,7 @@ Activity {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 height: 1 * A.dp
-                color : "#1A0000"
+                color : "#1A000000"
             }
 
             PopupMenu {
