@@ -30,6 +30,7 @@ int main(int argc, char *argv[])
 
 	qmlRegisterType(QUrl("qrc:/qml/components/LabelTextField.qml"), url, 1, 0, "LabelTextField");
 	qmlRegisterType(QUrl("qrc:/qml/components/TextSlider.qml"), url, 1, 0, "TextSlider");
+	qmlRegisterType(QUrl("qrc:/qml/components/TextSwitch.qml"), url, 1, 0, "TextSwitch");
 
 	qRegisterMetaType<Communicator::CommunicationStatus>("Communicator::CommunicationStatus");
 	qRegisterMetaType<ConnectionManager::CodeValidity>("ConnectionManager::CodeValidity");

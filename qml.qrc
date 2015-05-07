@@ -16,5 +16,6 @@
         <file>qml/pages/settings/Node.qml</file>
         <file>qml/pages/About.qml</file>
         <file>qml/pages/settings/security/CertificateGenerator.qml</file>
+        <file>qml/components/TextSwitch.qml</file>
     </qresource>
 </RCC>
