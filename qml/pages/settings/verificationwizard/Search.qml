@@ -97,7 +97,7 @@ Activity {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 model: discoveryModel
-                Layout.minimumHeight: 50 * discoveryModel.count * A.dp
+                Layout.minimumHeight: 50 * discoveryView.count * A.dp
                 Layout.fillHeight: true
 
                 delegate: Item {
@@ -116,7 +116,7 @@ Activity {
                         Label {
                             font.pixelSize: Style.theme.smallText.textSize * A.dp
                             text: host + ":" + port
-                            color: Style.theme.black87
+                            color: Style.theme.black54
                         }
 
                         Rectangle {
