@@ -90,7 +90,7 @@ Activity {
             anchors.top : parent.top
             anchors.left: parent.left
             anchors.right: parent.right
-            height: 40 * tmpmodel.count * A.dp
+            height: 40 * nodeModel.count * A.dp
             model: nodeModel
 
             delegate: QuickButton {
