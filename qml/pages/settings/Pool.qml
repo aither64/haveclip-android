@@ -78,6 +78,14 @@ Activity {
         id: nodeModel
     }
 
+    Label {
+        visible: listView.count === 0
+        text: qsTr("Add nodes using menu")
+        anchors.centerIn: parent
+        color: Style.theme.black54
+        font.pixelSize: Style.theme.normalText.textSize * A.dp
+    }
+
     Flickable {
         anchors.top : actionBar.bottom
         anchors.left: parent.left
@@ -90,7 +98,7 @@ Activity {
             anchors.top : parent.top
             anchors.left: parent.left
             anchors.right: parent.right
-            height: 40 * nodeModel.count * A.dp
+            height: 40 * listView.count * A.dp
             model: nodeModel
 
             delegate: QuickButton {
@@ -102,7 +110,7 @@ Activity {
                     anchors.left: parent.left
                     anchors.leftMargin: 10 * A.dp
                     anchors.verticalCenter: parent.verticalCenter
-                    font.pixelSize: Style.theme.smallText.textSize * A.dp
+                    font.pixelSize: Style.theme.text.textSize * A.dp
                     color : Style.theme.black87
                 }
 
