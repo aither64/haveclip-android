@@ -1,6 +1,7 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.3
 import QuickAndroid 0.1
+import QuickAndroid.style 0.1
 import cz.havefun.haveclip 1.0
 
 
@@ -35,6 +36,7 @@ Activity {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
+        anchors.topMargin: 20 * A.dp
 
         BusyIndicator {
             anchors.centerIn: parent
@@ -59,6 +61,8 @@ Activity {
                           + " and type in the security code shown below."
                     )
                 wrapMode: Text.Wrap
+                font.pixelSize: Style.theme.text.textSize * A.dp
+                color : Style.theme.black87
             }
         }
 
@@ -75,6 +79,8 @@ Activity {
             visible: dialog.introduced && !dialog.error
             anchors.centerIn: parent
             text: qsTr("Security code:") + " " + conman.securityCode
+            font.pixelSize: Style.theme.largeText.textSize * A.dp
+            color : Style.theme.black87
         }
     }
 
