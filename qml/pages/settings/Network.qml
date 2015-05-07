@@ -83,9 +83,10 @@ Activity {
                 title: qsTr("Auto discovery")
 
                 ColumnLayout {
-                    Layout.preferredWidth: parent.width
+                    anchors.left: parent.left
+                    anchors.right: parent.right
 
-                    CheckBox {
+                    TextSwitch {
                         id: allowAutoDiscovery
                         text: qsTr("Allow this device to be auto-discovered in LAN")
                         checked: settings.allowAutoDiscovery

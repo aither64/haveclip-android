@@ -40,7 +40,7 @@ Activity {
                     anchors.left: parent.left
                     anchors.right: parent.right
 
-                    CheckBox {
+                    TextSwitch {
                         id: trackingEnabled
                         text: qsTr("Track clipboard changes automatically")
                         checked: settings.trackingEnabled
@@ -52,7 +52,7 @@ Activity {
                         value: trackingEnabled.checked
                     }
 
-                    CheckBox {
+                    TextSwitch {
                         id: keepHistory
                         text: qsTr("Keep history")
                         checked: settings.historyEnabled
@@ -82,7 +82,7 @@ Activity {
                         value: historySize.value
                     }
 
-                    CheckBox {
+                    TextSwitch {
                         id: saveHistory
                         text: qsTr("Save history to disk")
                         enabled: keepHistory.checked
@@ -103,7 +103,10 @@ Activity {
                 title: qsTr("Synchronization")
 
                 ColumnLayout {
-                    CheckBox {
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+
+                    TextSwitch {
                         id: syncEnabled
                         text: qsTr("Enable synchronization")
                         checked: settings.syncEnabled
@@ -115,7 +118,7 @@ Activity {
                         value: syncEnabled.checked
                     }
 
-                    CheckBox {
+                    TextSwitch {
                         id: sendEnabled
                         text: qsTr("Enable clipboard sending")
                         checked: settings.sendEnabled
@@ -128,7 +131,7 @@ Activity {
                         value: sendEnabled.checked
                     }
 
-                    CheckBox {
+                    TextSwitch {
                         id: recvEnabled
                         text: qsTr("Enable clipboard receiving")
                         checked: settings.recvEnabled

@@ -179,9 +179,10 @@ Activity {
                 title: qsTr("Synchronization")
 
                 ColumnLayout {
-                    Layout.fillWidth: true
+                    anchors.left: parent.left
+                    anchors.right: parent.right
 
-                    CheckBox {
+                    TextSwitch {
                         id: sendEnabled
                         text: qsTr("Send the clipboard to this node")
                     }
@@ -192,7 +193,7 @@ Activity {
                         value: sendEnabled.checked
                     }
 
-                    CheckBox {
+                    TextSwitch {
                         id: recvEnabled
                         text: qsTr("Receive the clipboard from this node")
                     }
