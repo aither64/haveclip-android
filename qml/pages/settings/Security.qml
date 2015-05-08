@@ -55,7 +55,7 @@ Activity {
             id: mainColumn
             anchors.left: parent.left
             anchors.right: parent.right
-            spacing: 10 * A.dp
+            spacing: 15 * A.dp
 
             GroupBox {
                 anchors.left: parent.left
@@ -63,6 +63,8 @@ Activity {
                 title: qsTr("Encryption")
 
                 ColumnLayout {
+                    spacing: 15 * A.dp
+
                     Label {
                         text: qsTr("Mode")
                     }
@@ -117,6 +119,7 @@ Activity {
 
                 ColumnLayout {
                     visible: !helpers.selfSslCertificate.null
+                    spacing: 15 * A.dp
 
                     LabelTextField {
                         width: parent.width

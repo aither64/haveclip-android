@@ -29,7 +29,7 @@ Activity {
             id: mainColumn
             anchors.left: parent.left
             anchors.right: parent.right
-            spacing: 10 * A.dp
+            spacing: 20 * A.dp
 
             GroupBox {
                 anchors.left: parent.left
@@ -39,6 +39,7 @@ Activity {
                 ColumnLayout {
                     anchors.left: parent.left
                     anchors.right: parent.right
+                    spacing: 20 * A.dp
 
                     TextSwitch {
                         id: trackingEnabled
@@ -105,6 +106,7 @@ Activity {
                 ColumnLayout {
                     anchors.left: parent.left
                     anchors.right: parent.right
+                    spacing: 20 * A.dp
 
                     TextSwitch {
                         id: syncEnabled

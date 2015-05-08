@@ -108,7 +108,8 @@ Activity {
                 Text {
                     text: name.length ? name : (host + ":" + port)
                     anchors.left: parent.left
-                    anchors.leftMargin: 10 * A.dp
+                    anchors.leftMargin: 20 * A.dp
+                    anchors.rightMargin: 20 * A.dp
                     anchors.verticalCenter: parent.verticalCenter
                     font.pixelSize: Style.theme.text.textSize * A.dp
                     color : Style.theme.black87
@@ -119,7 +120,7 @@ Activity {
                     anchors.left: parent.left
                     anchors.right: parent.right
                     height: 1 * A.dp
-                    color : "#1A0000"
+                    color : "#eaeaea"
                 }
 
                 PopupMenu {

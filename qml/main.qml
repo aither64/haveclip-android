@@ -3,11 +3,30 @@ import QtQuick.Controls 1.3
 import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.1
 import QuickAndroid 0.1
+import QuickAndroid.style 0.1
 import cz.havefun.haveclip 1.0
 
 Application {
     width: 1200
     height: 700
+
+    theme : Theme {
+        actionBar.background : "#90118e"
+        actionBar.titleTextStyle : actionTitleStyle
+        dropdown.textStyle: actionMenuStyle
+
+        TextStyle {
+            id : actionTitleStyle
+            textSize: 18
+            textColor: "#ffffff"
+        }
+
+        TextStyle {
+            id: actionMenuStyle
+            textSize: 18
+            textColor: Style.theme.black87
+        }
+    }
 
     Loader {
         id: loader

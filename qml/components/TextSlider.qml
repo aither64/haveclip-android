@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.2
+import QtQuick.Controls.Styles 1.2
 import QtQuick.Layouts 1.1
 
 ColumnLayout {
@@ -51,6 +52,34 @@ ColumnLayout {
         stepSize: field.stepSize
         value: field.value
         enabled: field.enabled
+
+        style: SliderStyle {
+            groove: Rectangle {
+                implicitWidth: 200
+                implicitHeight: 1
+                color: "#333333"
+                radius: 1
+            }
+
+            handle: Rectangle {
+                anchors.centerIn: parent
+                color: "#80e3728d"
+                border.color: "#e3728d"
+                border.width: control.pressed ? 1 : 0
+                implicitWidth: 30
+                implicitHeight: 30
+                radius: 16
+
+                Rectangle {
+                    anchors.centerIn: parent
+                    color: "#e3728d"
+                    implicitWidth: 15
+                    implicitHeight: 15
+                    radius: 12
+                    opacity: 1.0
+                }
+            }
+        }
     }
 
     Binding {

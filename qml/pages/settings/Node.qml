@@ -111,7 +111,7 @@ Activity {
             id: mainColumn
             anchors.left: parent.left
             anchors.right: parent.right
-            spacing: 10 * A.dp
+            spacing: 20 * A.dp
 
             GroupBox {
                 anchors.left: parent.left
@@ -120,6 +120,7 @@ Activity {
 
                 ColumnLayout {
                     Layout.fillWidth: true
+                    spacing: 15 * A.dp
 
                     LabelTextField {
                         id: nameField
@@ -181,6 +182,7 @@ Activity {
                 ColumnLayout {
                     anchors.left: parent.left
                     anchors.right: parent.right
+                    spacing: 15 * A.dp
 
                     TextSwitch {
                         id: sendEnabled
@@ -213,6 +215,7 @@ Activity {
 
                 ColumnLayout {
                     Layout.fillWidth: true
+                    spacing: 15 * A.dp
 
                     LabelTextField {
                         width: parent.width

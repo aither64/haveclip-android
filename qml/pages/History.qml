@@ -95,16 +95,19 @@ Activity {
 
         delegate: QuickButton {
             width: parent.width
-            height: 50 * A.dp
+            height: 80 * A.dp
 
             Text {
                 text: formatItem(plaintext)
                 anchors.left: parent.left
-                anchors.leftMargin: 10 * A.dp
+                anchors.right: parent.right
+                anchors.leftMargin: 20 * A.dp
+                anchors.rightMargin: 20 * A.dp
                 verticalAlignment: Text.AlignVCenter
                 font.pixelSize: Style.theme.text.textSize * A.dp
                 color : Style.theme.black87
-                height: 49 * A.dp
+                height: 79 * A.dp
+                wrapMode: Text.Wrap
             }
 
             Rectangle {
@@ -112,7 +115,7 @@ Activity {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 height: 1 * A.dp
-                color : "#1A000000"
+                color : "#eaeaea"
             }
 
             PopupMenu {
@@ -141,9 +144,9 @@ Activity {
             }
 
             function formatItem(str) {
-                var ret = str.trim().slice(0, 30);
+                var ret = str.trim().slice(0, 60);
 
-                if(str.length > 30)
+                if(str.length > 60)
                     ret += "...";
 
                 else if(!str.length)

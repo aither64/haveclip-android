@@ -118,7 +118,7 @@ Activity {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 height: 1 * A.dp
-                color : "#1A0000"
+                color : "#eaeaea"
             }
 
             onClicked: start(Qt.resolvedUrl("settings/" + model.page))
