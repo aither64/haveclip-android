@@ -11,7 +11,7 @@ Activity {
     ActionBar {
         id: actionBar
         upEnabled: true
-        title: qsTr("About...")
+        title: qsTr("About")
         showTitle: true
         z: 10
         actionButtonEnabled: true
@@ -36,6 +36,7 @@ Activity {
             Label {
                 anchors.horizontalCenter: parent.horizontalCenter
                 font.pixelSize: Style.theme.largeText.textSize * A.dp
+                color: "#e3728d"
                 text: "HaveClip"
             }
 
@@ -75,6 +76,7 @@ Activity {
             Label {
                 anchors.horizontalCenter: parent.horizontalCenter
                 font.pixelSize: Style.theme.smallText.textSize * A.dp
+                font.weight: Font.DemiBold
                 text: "Developed by"
             }
 
@@ -88,7 +90,8 @@ Activity {
             Label {
                 anchors.horizontalCenter: parent.horizontalCenter
                 font.pixelSize: Style.theme.smallText.textSize * A.dp
-                text: "Icon created by"
+                font.weight: Font.DemiBold
+                text: "Designed by"
             }
 
             Label {
