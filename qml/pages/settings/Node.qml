@@ -103,15 +103,12 @@ Activity {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         anchors.topMargin: 10 * A.dp
-        anchors.leftMargin: 10 * A.dp
-        anchors.rightMargin: 10 * A.dp
         contentHeight: mainColumn.height
 
         ColumnLayout {
             id: mainColumn
             anchors.left: parent.left
             anchors.right: parent.right
-            spacing: 20 * A.dp
 
             GroupBox {
                 anchors.left: parent.left
@@ -119,14 +116,15 @@ Activity {
                 title: qsTr("Description")
 
                 ColumnLayout {
-                    Layout.fillWidth: true
+                    anchors.left: parent.left
+                    anchors.right: parent.right
                     spacing: 15 * A.dp
 
                     LabelTextField {
                         id: nameField
-                        width: parent.width
+                        anchors.left: parent.left
+                        anchors.right: parent.right
                         label: qsTr("Name")
-                        placeholderText: qsTr("Name")
                         validator: RegExpValidator {
                             regExp: /.+/
                         }
@@ -140,9 +138,9 @@ Activity {
 
                     LabelTextField {
                         id: addrField
-                        width: parent.width
+                        anchors.left: parent.left
+                        anchors.right: parent.right
                         label: qsTr("IP address/hostname")
-                        placeholderText: qsTr("IP address/hostname")
                         validator: RegExpValidator {
                             regExp: /^[^\s]+$/
                         }
@@ -156,9 +154,9 @@ Activity {
 
                     LabelTextField {
                         id: portField
-                        width: parent.width
+                        anchors.left: parent.left
+                        anchors.right: parent.right
                         label: qsTr("Port")
-                        placeholderText: qsTr("Port")
                         inputMethodHints: Qt.ImhDigitsOnly
                         validator: IntValidator {
                             bottom: 1
@@ -214,46 +212,53 @@ Activity {
                 title: qsTr("Identity")
 
                 ColumnLayout {
-                    Layout.fillWidth: true
+                    anchors.left: parent.left
+                    anchors.right: parent.right
                     spacing: 15 * A.dp
 
                     LabelTextField {
-                        width: parent.width
+                        anchors.left: parent.left
+                        anchors.right: parent.right
                         label: qsTr("Common name")
                         text: node.sslCertificate.commonName
                         readOnly: true
                     }
 
                     LabelTextField {
-                        width: parent.width
+                        anchors.left: parent.left
+                        anchors.right: parent.right
                         label: qsTr("Organization")
                         text: node.sslCertificate.organization
                         readOnly: true
                     }
 
                     LabelTextField {
-                        width: parent.width
+                        anchors.left: parent.left
+                        anchors.right: parent.right
                         label: qsTr("Organization unit")
                         text: node.sslCertificate.organizationUnit
                         readOnly: true
                     }
 
                     LabelTextField {
-                        width: parent.width
+                        anchors.left: parent.left
+                        anchors.right: parent.right
                         label: qsTr("Issued on")
                         text: Qt.formatDateTime(node.sslCertificate.issuedOn, "d/M/yyyy")
                         readOnly: true
                     }
 
                     LabelTextField {
-                        width: parent.width
+                        anchors.left: parent.left
+                        anchors.right: parent.right
                         label: qsTr("Expires on")
                         text: Qt.formatDateTime(node.sslCertificate.expiryDate, "d/M/yyyy")
                         readOnly: true
                     }
 
                     LabelTextField {
-                        width: parent.width
+                        anchors.left: parent.left
+                        anchors.right: parent.right
                         label: qsTr("SHA-1 Fingerprint")
                         text: node.sslCertificate.sha1Digest
                         readOnly: true

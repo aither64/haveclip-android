@@ -21,15 +21,12 @@ Activity {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         anchors.topMargin: 10 * A.dp
-        anchors.leftMargin: 10 * A.dp
-        anchors.rightMargin: 10 * A.dp
         contentHeight: mainColumn.height
 
         ColumnLayout {
             id: mainColumn
             anchors.left: parent.left
             anchors.right: parent.right
-            spacing: 15 * A.dp
 
             GroupBox {
                 anchors.left: parent.left
@@ -37,14 +34,15 @@ Activity {
                 title: qsTr("Listen on")
 
                 ColumnLayout {
-                    Layout.fillWidth: true
+                    anchors.left: parent.left
+                    anchors.right: parent.right
                     spacing: 15 * A.dp
 
                     LabelTextField {
                         id: host
-                        width: parent.width
+                        anchors.left: parent.left
+                        anchors.right: parent.right
                         label: qsTr("IP address or hostname")
-                        placeholderText: qsTr("IP address or hostname")
                         text: settings.host
                         validator: RegExpValidator {
                             regExp: /^[^\s]+$/
@@ -59,9 +57,9 @@ Activity {
 
                     LabelTextField {
                         id: port
-                        width: parent.width
+                        anchors.left: parent.left
+                        anchors.right: parent.right
                         label: qsTr("Port")
-                        placeholderText: qsTr("Port")
                         text: settings.port
                         inputMethodHints: Qt.ImhDigitsOnly
                         validator: IntValidator {
@@ -92,26 +90,30 @@ Activity {
                         id: allowAutoDiscovery
                         text: qsTr("Allow this device to be auto-discovered in LAN")
                         checked: settings.allowAutoDiscovery
-                    }
 
-                    Binding {
-                        target: settings
-                        property: "allowAutoDiscovery"
-                        value: allowAutoDiscovery.checked
+                        Binding {
+                            target: settings
+                            property: "allowAutoDiscovery"
+                            value: allowAutoDiscovery.checked
+                        }
                     }
 
                     LabelTextField {
                         id: networkName
-                        width: parent.width
+                        anchors.left: parent.left
+                        anchors.right: parent.right
                         label: qsTr("Network name")
-                        placeholderText: qsTr("network name")
                         text: settings.networkName
+
+                        Binding {
+                            target: settings
+                            property: "networkName"
+                            value: networkName.text
+                        }
                     }
 
-                    Binding {
-                        target: settings
-                        property: "networkName"
-                        value: networkName.text
+                    Rectangle {
+                        Layout.preferredHeight: 5 * A.dp
                     }
                 }
             }
@@ -119,7 +121,7 @@ Activity {
             GroupBox {
                 anchors.left: parent.left
                 anchors.right: parent.right
-                title: qsTr("Auto discovery")
+                title: qsTr("Limits")
 
                 ColumnLayout {
                     anchors.left: parent.left

@@ -26,8 +26,6 @@ Activity {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         anchors.topMargin: 10 * A.dp
-        anchors.leftMargin: 10 * A.dp
-        anchors.rightMargin: 10 * A.dp
         contentHeight: mainColumn.height
 
         ColumnLayout {
@@ -47,7 +45,8 @@ Activity {
 
                     LabelTextField {
                         id: addrField
-                        width: parent.width
+                        anchors.left: parent.left
+                        anchors.right: parent.right
                         label: qsTr("IP address/hostname")
                         placeholderText: qsTr("IP address/hostname")
                         validator: RegExpValidator {
@@ -57,7 +56,8 @@ Activity {
 
                     LabelTextField {
                         id: portField
-                        width: parent.width
+                        anchors.left: parent.left
+                        anchors.right: parent.right
                         label: qsTr("Port")
                         placeholderText: qsTr("Port")
                         inputMethodHints: Qt.ImhDigitsOnly

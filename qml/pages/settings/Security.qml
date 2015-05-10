@@ -47,15 +47,12 @@ Activity {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         anchors.topMargin: 10 * A.dp
-        anchors.leftMargin: 10 * A.dp
-        anchors.rightMargin: 10 * A.dp
         contentHeight: mainColumn.height
 
         ColumnLayout {
             id: mainColumn
             anchors.left: parent.left
             anchors.right: parent.right
-            spacing: 15 * A.dp
 
             GroupBox {
                 anchors.left: parent.left
@@ -63,6 +60,8 @@ Activity {
                 title: qsTr("Encryption")
 
                 ColumnLayout {
+                    anchors.left: parent.left
+                    anchors.right: parent.right
                     spacing: 15 * A.dp
 
                     Label {
@@ -84,9 +83,9 @@ Activity {
 
                     LabelTextField {
                         id: certificate
-                        width: parent.width
+                        anchors.left: parent.left
+                        anchors.right: parent.right
                         label: qsTr("Certificate path")
-                        placeholderText: qsTr("certificate path")
                         text: settings.certificatePath
                     }
 
@@ -98,9 +97,9 @@ Activity {
 
                     LabelTextField {
                         id: privateKey
-                        width: parent.width
+                        anchors.left: parent.left
+                        anchors.right: parent.right
                         label: qsTr("Private key")
-                        placeholderText: qsTr("Private key")
                         text: settings.privateKeyPath
                     }
 
@@ -118,46 +117,54 @@ Activity {
                 title: qsTr("Identity")
 
                 ColumnLayout {
+                    anchors.left: parent.left
+                    anchors.right: parent.right
                     visible: !helpers.selfSslCertificate.null
                     spacing: 15 * A.dp
 
                     LabelTextField {
-                        width: parent.width
+                        anchors.left: parent.left
+                        anchors.right: parent.right
                         label: qsTr("Common name")
                         text: helpers.selfSslCertificate.commonName
                         readOnly: true
                     }
 
                     LabelTextField {
-                        width: parent.width
+                        anchors.left: parent.left
+                        anchors.right: parent.right
                         label: qsTr("Organization")
                         text: helpers.selfSslCertificate.organization
                         readOnly: true
                     }
 
                     LabelTextField {
-                        width: parent.width
+                        anchors.left: parent.left
+                        anchors.right: parent.right
                         label: qsTr("Organization unit")
                         text: helpers.selfSslCertificate.organizationUnit
                         readOnly: true
                     }
 
                     LabelTextField {
-                        width: parent.width
+                        anchors.left: parent.left
+                        anchors.right: parent.right
                         label: qsTr("Issued on")
                         text: Qt.formatDateTime(helpers.selfSslCertificate.issuedOn, "d/M/yyyy")
                         readOnly: true
                     }
 
                     LabelTextField {
-                        width: parent.width
+                        anchors.left: parent.left
+                        anchors.right: parent.right
                         label: qsTr("Expires on")
                         text: Qt.formatDateTime(helpers.selfSslCertificate.expiryDate, "d/M/yyyy")
                         readOnly: true
                     }
 
                     LabelTextField {
-                        width: parent.width
+                        anchors.left: parent.left
+                        anchors.right: parent.right
                         label: qsTr("SHA-1 Fingerprint")
                         text: helpers.selfSslCertificate.sha1Digest
                         readOnly: true

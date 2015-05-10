@@ -47,7 +47,6 @@ Dialog {
             Layout.fillWidth: true
             Layout.fillHeight: true
             label: qsTr("Security code")
-            placeholderText: qsTr("Enter the security code")
             validator: RegExpValidator {
                 regExp: /^[0-9]{6}$/
             }
