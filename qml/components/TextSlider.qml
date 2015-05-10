@@ -2,6 +2,7 @@ import QtQuick 2.0
 import QtQuick.Controls 1.2
 import QtQuick.Controls.Styles 1.2
 import QtQuick.Layouts 1.1
+import QuickAndroid 0.1
 
 ColumnLayout {
     id: field
@@ -23,7 +24,7 @@ ColumnLayout {
 
         Label {
             id: labelField
-            width: parent.width - valueField.width - 20
+            width: parent.width - valueField.width - 20 * A.dp
             text: field.label
             wrapMode: Text.Wrap
         }
@@ -35,6 +36,10 @@ ColumnLayout {
             text: field.valueText
             horizontalAlignment: Text.AlignRight
         }
+    }
+
+    Rectangle {
+        height: 10 * A.dp
     }
 
     Slider {
@@ -58,8 +63,8 @@ ColumnLayout {
             handle: Rectangle {
                 anchors.centerIn: parent
                 color: "#e3728d"
-                implicitWidth: 15
-                implicitHeight: 15
+                implicitWidth: 12 * A.dp
+                implicitHeight: 12 * A.dp
                 radius: 12
             }
         }
