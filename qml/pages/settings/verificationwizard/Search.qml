@@ -94,6 +94,8 @@ Activity {
                 id: discoveryView
                 anchors.left: parent.left
                 anchors.right: parent.right
+                anchors.leftMargin: 15 * A.dp
+                anchors.rightMargin: 15 * A.dp
                 model: discoveryModel
                 Layout.minimumHeight: 50 * discoveryView.count * A.dp
                 Layout.fillHeight: true
