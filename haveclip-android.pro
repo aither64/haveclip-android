@@ -113,4 +113,11 @@ DISTFILES += \
 
 android: ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 
+GITVERSION = haveclip-core/src/git_version.h
+versiontarget.target =  $$GITVERSION
+versiontarget.commands = '$$PWD/haveclip-core/utils/git_version.sh \"$$PWD\" $$GITVERSION'
+versiontarget.depends = FORCE
+PRE_TARGETDEPS += $$GITVERSION
+QMAKE_EXTRA_TARGETS += versiontarget
+
 include(quickandroid/quickandroid.pri)
