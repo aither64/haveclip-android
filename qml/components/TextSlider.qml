@@ -8,38 +8,32 @@ ColumnLayout {
     anchors.left: parent.left
     anchors.right: parent.right
 
-    property string label
-    property real minimumValue: 0.0
-    property real maximumValue: 1.0
-    property real stepSize: 0.1
-    property real value: 0
-    property string valueText: value
+    property alias label: labelField.text
+    property alias minimumValue: slider.minimumValue
+    property alias maximumValue: slider.maximumValue
+    property alias stepSize: slider.stepSize
+    property alias value: slider.value
+    property alias valueText: valueField.text
     property bool enabled: true
 
-    Label {
-        text: field.label
-    }
-
     Item {
-        Layout.fillWidth: true
-        Layout.preferredHeight: 30
+        anchors.left: parent.left
+        anchors.right: parent.right
+        height: Math.max(labelField.height, valueField.height)
 
         Label {
+            id: labelField
+            width: parent.width - valueField.width - 20
+            text: field.label
+            wrapMode: Text.Wrap
+        }
+
+        Label {
+            id: valueField
+            width: contentWidth
+            anchors.right: parent.right
             text: field.valueText
-            x: {
-                var percent = slider.maximumValue / 100 * slider.value;
-                var pos = (percent / 100 * slider.width) - width / 2;
-
-                if (pos < 0)
-                    pos = 0;
-
-                var field_x = field.x + field.width;
-
-                if (pos + width > field_x)
-                    pos = field_x - width;
-
-                return pos;
-            }
+            horizontalAlignment: Text.AlignRight
         }
     }
 
@@ -63,21 +57,10 @@ ColumnLayout {
 
             handle: Rectangle {
                 anchors.centerIn: parent
-                color: "#80e3728d"
-                border.color: "#e3728d"
-                border.width: control.pressed ? 1 : 0
-                implicitWidth: 30
-                implicitHeight: 30
-                radius: 16
-
-                Rectangle {
-                    anchors.centerIn: parent
-                    color: "#e3728d"
-                    implicitWidth: 15
-                    implicitHeight: 15
-                    radius: 12
-                    opacity: 1.0
-                }
+                color: "#e3728d"
+                implicitWidth: 15
+                implicitHeight: 15
+                radius: 12
             }
         }
     }
