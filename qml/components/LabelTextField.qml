@@ -34,6 +34,7 @@ FocusScope {
             Layout.preferredHeight: 30 * A.dp
             focus: true
             textInput.readOnly: component.readOnly
+            background: "qrc:///QuickAndroid/drawable/TextFieldSearchHoloLight.qml"
 
             Binding {
                 target: textField.textInput

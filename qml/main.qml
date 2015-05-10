@@ -14,6 +14,7 @@ Application {
         actionBar.background : "#90118e"
         actionBar.titleTextStyle : actionTitleStyle
         dropdown.textStyle: actionMenuStyle
+        textInput.textStyle: textInputStyle
 
         TextStyle {
             id : actionTitleStyle
@@ -24,6 +25,12 @@ Application {
         TextStyle {
             id: actionMenuStyle
             textSize: 18
+            textColor: Style.theme.black87
+        }
+
+        TextStyle {
+            id: textInputStyle
+            textSize: Style.theme.largeText.textSize
             textColor: Style.theme.black87
         }
     }
