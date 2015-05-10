@@ -13,8 +13,8 @@ CheckBox {
 
     style: CheckBoxStyle {
         indicator: Rectangle {
-            implicitWidth: 24
-            implicitHeight: 24
+            implicitWidth: 18 * A.dp
+            implicitHeight: 18 * A.dp
             radius: 2
             border.color: "#e3728d"
             border.width: 2
@@ -26,10 +26,10 @@ CheckBox {
                 border.color: "#ffffff"
                 radius: 1
                 rotation: 135
-                width: 19
-                height: 3
-                x: 6
-                y: 11
+                width: 15 * A.dp
+                height: 2 * A.dp
+                x: 4 * A.dp
+                y: 8 * A.dp
             }
 
             Rectangle {
@@ -38,17 +38,17 @@ CheckBox {
                 border.color: "#ffffff"
                 radius: 1
                 rotation: 45
-                width: 9
-                height: 3
-                x: 1
-                y: 13
+                width: 7 * A.dp
+                height: 2 * A.dp
+                x: 1 * A.dp
+                y: 11 * A.dp
             }
         }
 
         label: Label {
             id: label
-            x: 5
-            width: switchItem.parent.width - 24 - x
+            x: 5 * A.dp
+            width: switchItem.parent.width - (24 * A.dp) - x
             wrapMode: Text.Wrap
             verticalAlignment: Text.AlignVCenter
             text: control.text
