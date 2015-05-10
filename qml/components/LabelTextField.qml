@@ -3,7 +3,7 @@ import QtQuick.Controls 1.3
 import QtQuick.Layouts 1.1
 import QuickAndroid 0.1
 
-FocusScope {
+ColumnLayout {
     id: component
 
     property alias label: label.text
@@ -12,43 +12,34 @@ FocusScope {
     property var inputMethodHints
     property bool readOnly
 
-    height: layout.height
-    clip: true
-
-    ColumnLayout {
-        id: layout
+    Label {
+        id: label
         anchors.left: parent.left
         anchors.right: parent.right
+        wrapMode: Text.Wrap
+    }
 
-        Label {
-            id: label
-            anchors.left: parent.left
-            anchors.right: parent.right
-            wrapMode: Text.Wrap
+    QATextInput {
+        id: textField
+        anchors.left: parent.left
+        anchors.right: parent.right
+        Layout.preferredHeight: 36 * A.dp
+        textInput.readOnly: component.readOnly
+        background: "qrc:///QuickAndroid/drawable/TextFieldSearchHoloLight.qml"
+        gravity: "bottom"
+
+        Binding {
+            target: textField.textInput
+            property: "validator"
+            value: component.validator
+            when: component.validator !== undefined
         }
 
-        QATextInput {
-            id: textField
-            anchors.left: parent.left
-            anchors.right: parent.right
-            Layout.preferredHeight: 30 * A.dp
-            focus: true
-            textInput.readOnly: component.readOnly
-            background: "qrc:///QuickAndroid/drawable/TextFieldSearchHoloLight.qml"
-
-            Binding {
-                target: textField.textInput
-                property: "validator"
-                value: component.validator
-                when: component.validator !== undefined
-            }
-
-            Binding {
-                target: textField.textInput
-                property: "inputMethodHints"
-                value: component.inputMethodHints
-                when: component.inputMethodHints !== undefined
-            }
+        Binding {
+            target: textField.textInput
+            property: "inputMethodHints"
+            value: component.inputMethodHints
+            when: component.inputMethodHints !== undefined
         }
     }
 }
