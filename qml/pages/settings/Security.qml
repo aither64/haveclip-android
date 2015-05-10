@@ -1,6 +1,7 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.3
 import QtQuick.Layouts 1.1
+import QtQuick.Dialogs 1.2
 import QuickAndroid 0.1
 import cz.havefun.haveclip 1.0
 
@@ -70,7 +71,8 @@ Activity {
 
                     ComboBox {
                         id: mode
-                        width: parent.width
+                        anchors.left: parent.left
+                        anchors.right: parent.right
                         model: [qsTr("None"), qsTr("SSL"), qsTr("TLS")]
                         currentIndex: settings.encryption
                     }
