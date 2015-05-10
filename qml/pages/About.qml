@@ -42,7 +42,12 @@ Activity {
             Label {
                 anchors.horizontalCenter: parent.horizontalCenter
                 font.pixelSize: Style.theme.smallText.textSize * A.dp
-                text: qsTr("version v") + manager.version
+                textFormat: Text.RichText
+                text: page.styledRichText(
+                          qsTr("version v") + manager.version + " (" + qsTr("commit") + " " +
+                          '<a href="https://github.com/aither64/haveclip-android/tree/'+ manager.commitSha1 +'">' +
+                          manager.commitSha1.slice(0, 7) +'</a>)')
+                onLinkActivated: Qt.openUrlExternally(link)
             }
 
             Label {
