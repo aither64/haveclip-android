@@ -48,7 +48,6 @@ Activity {
                         anchors.left: parent.left
                         anchors.right: parent.right
                         label: qsTr("IP address/hostname")
-                        placeholderText: qsTr("IP address/hostname")
                         validator: RegExpValidator {
                             regExp: /^[^\s]+$/
                         }
@@ -59,7 +58,6 @@ Activity {
                         anchors.left: parent.left
                         anchors.right: parent.right
                         label: qsTr("Port")
-                        placeholderText: qsTr("Port")
                         inputMethodHints: Qt.ImhDigitsOnly
                         validator: IntValidator {
                             bottom: 1
