@@ -17,5 +17,6 @@
         <file>qml/pages/About.qml</file>
         <file>qml/pages/settings/security/CertificateGenerator.qml</file>
         <file>qml/components/TextSwitch.qml</file>
+        <file>qml/components/GroupBox.qml</file>
     </qresource>
 </RCC>

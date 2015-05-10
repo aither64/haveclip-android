@@ -28,6 +28,7 @@ int main(int argc, char *argv[])
 
 	const char* url = "cz.havefun.haveclip";
 
+	qmlRegisterType(QUrl("qrc:/qml/components/GroupBox.qml"), url, 1, 0, "GroupBox");
 	qmlRegisterType(QUrl("qrc:/qml/components/LabelTextField.qml"), url, 1, 0, "LabelTextField");
 	qmlRegisterType(QUrl("qrc:/qml/components/TextSlider.qml"), url, 1, 0, "TextSlider");
 	qmlRegisterType(QUrl("qrc:/qml/components/TextSwitch.qml"), url, 1, 0, "TextSwitch");
