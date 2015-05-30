@@ -1,6 +1,6 @@
 [submodule "haveclip-core"]
 	path = haveclip-core
-	url = https://github.com/aither64/haveclip-core.git
+	url = http://git.havefun.cz/haveclip/haveclip-core.git
 
 [submodule "quickandroid"]
 	path = quickandroid
